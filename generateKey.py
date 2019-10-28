@@ -2,6 +2,10 @@
 import paramiko, io, base64, sys
 from Crypto.PublicKey import RSA
 
+from cryptography.hazmat.backends import default_backend
+from cryptography.hazmat.primitives.asymmetric import rsa
+from cryptography.hazmat.primitives import serialization
+
 KEY_SIZE = 1024
 KEY_PASSPHRASE = None
 
@@ -12,9 +16,9 @@ key.write_private_key(keyio, KEY_PASSPHRASE)
 
 
 PRIVATE_KEY = keyio.getvalue()
-#PUBLIC_KEY = RSA.importKey(keyio.getvalue()).publickey().exportKey('PEM').decode()
 PUBLIC_KEY = RSA.importKey(keyio.getvalue()).publickey().exportKey('PEM')
-#.exportKey('PEM').decode()
+
+
 
 print("PRIVATE_KEY={}".format(PRIVATE_KEY))
 print("PUBLIC_KEY={}".format(PUBLIC_KEY))
