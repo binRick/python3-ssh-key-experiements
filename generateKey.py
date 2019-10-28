@@ -12,7 +12,9 @@ key.write_private_key(keyio, KEY_PASSPHRASE)
 
 
 PRIVATE_KEY = keyio.getvalue()
-PUBLIC_KEY = RSA.importKey(keyio.getvalue()).publickey().exportKey('PEM').decode()
+#PUBLIC_KEY = RSA.importKey(keyio.getvalue()).publickey().exportKey('PEM').decode()
+PUBLIC_KEY = RSA.importKey(keyio.getvalue()).publickey().exportKey('PEM')
+#.exportKey('PEM').decode()
 
 print("PRIVATE_KEY={}".format(PRIVATE_KEY))
 print("PUBLIC_KEY={}".format(PUBLIC_KEY))
